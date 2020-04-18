@@ -16,6 +16,7 @@ public class ClassForNameAndLoadLoad {
         Field field = classOneClass.getDeclaredField("v");
        // field.setAccessible(true);
 
+
         //Although loadClass won't initialize the Class(run the static block, assign static variable),
         //but if the static variable is used or gotten, the Class will be initialized.
         //System.out.println(field.getInt(classOneClass));
