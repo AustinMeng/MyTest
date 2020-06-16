@@ -9,6 +9,7 @@ public class Prototype implements Cloneable {
         try {
             protoType = (Prototype) super.clone();
             protoType.i = 50;
+            System.out.println("clone class Prototype");
         } catch (CloneNotSupportedException e) {
 
         }

@@ -30,7 +30,11 @@ public class Test {
         System.out.println(Integer.toBinaryString(-1));
         System.out.println(Long.toString(Long.MAX_VALUE,36));
         String seqStr = Long.toString(Long.MAX_VALUE,36);
-        String numSeqStr = Long.toString(Long.MAX_VALUE);
+        String numSeqStr = Long.toString( Long.MAX_VALUE);
+
+        byte b = 0x7f;
+        System.out.println(
+            "b: " + Integer.toBinaryString(b));
 
 
     }
