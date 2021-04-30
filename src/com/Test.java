@@ -1,41 +1,49 @@
 package com;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-import sun.rmi.runtime.Log;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class Test {
-    public static void main(String[] args) {
-        Integer i = 129;
-        Integer j = 129;
-        System.out.println(i == j);
-        System.out.println(i.compareTo(j));
-        System.out.println(i.equals(j));
-        System.out.println("...................................");
-//        String str1 = "meng";
-//        String str2 = "meng";
-//        String str3 = new String("meng");
-//        System.out.println(str1 == str2);
-//        System.out.println(str1 == str3);
-        System.out.println(Integer.MAX_VALUE );
-        System.out.println(Integer.MAX_VALUE + 1);
-        System.out.println(Integer.MIN_VALUE);
-        String str1= "abc";
-        String str2= new String("abc");
-        String str3= str2.intern();
-        System.out.println(str1==str2);
-        System.out.println(str2==str3);
-        System.out.println(str1==str3);
-        System.out.println(Integer.toBinaryString(-8));
-        System.out.println(Integer.toBinaryString(-7));
-        System.out.println(Integer.toBinaryString(-1));
-        System.out.println(Long.toString(Long.MAX_VALUE,36));
-        String seqStr = Long.toString(Long.MAX_VALUE,36);
-        String numSeqStr = Long.toString( Long.MAX_VALUE);
 
-        byte b = 0x7f;
-        System.out.println(
-            "b: " + Integer.toBinaryString(b));
+  public static void main(String[] args) {
+    Map<String, String> map = new LinkedHashMap<>();
+
+    map.put("a", "1");
+    map.put("b", "2");
+    map.put("c", "3");
+    map.forEach((x, y) -> System.out.print(x));
+    System.out.println(".................");
+
+    map.get("a");
+    map.forEach((x, y) -> System.out.print(x));
+    System.out.println(".................");
+
+    Map<String, String> lruMap = new LinkedHashMap<>(16,0.75F, true);
+
+    lruMap.put("a", "1");
+    lruMap.put("b", "2");
+    lruMap.put("c", "3");
+    lruMap.forEach((x, y) -> System.out.print(x));
+    System.out.println(".................");
+
+    lruMap.get("a");
+    lruMap.forEach((x, y) -> System.out.print(x));
+    System.out.println(".................");
 
 
-    }
+    String str1 = new String("test");
+    String str2 = "test";
+    System.out.println(str1 == str2);
+    String str = str1.intern();
+    System.out.println(str == str2);
+
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("Australia/Darwin"));
+    System.out.println(now);
+  }
 }
