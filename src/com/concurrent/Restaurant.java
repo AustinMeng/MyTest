@@ -88,18 +88,24 @@ class Chef implements Runnable {
     }
 }
 
+/**
+ * 此示例只是为了展示一个producer和consumer在两个线程的协同操作。不适合多producer和多consumer，第一他们都是以自己作为入口的锁，第二producer对count的操作也非线程安全。
+ * Restaurant1 为改进版本
+ *
+ */
 public class Restaurant {
 
     Meal meal;
     ExecutorService exec = Executors.newCachedThreadPool();
     WaitPerson waitPerson = new WaitPerson(this, "0");
-    //WaitPerson waitPerson1 = new WaitPerson(this,"1");
     Chef chef = new Chef(this);
 
     public Restaurant() {
         exec.execute(chef);
+//        exec.execute(chef);
+//        exec.execute(waitPerson);
         exec.execute(waitPerson);
-        //exec.execute(waitPerson1);
+
     }
 
     public static void main(String[] args) {
