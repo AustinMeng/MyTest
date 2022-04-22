@@ -3,12 +3,18 @@ package com.clone;
 
 public class Prototype implements Cloneable {
     public int i = 10;
+    public Object object = new Object();
+
+    public void show() {
+        System.out.println("this:" + this.toString() + " super:" + super.toString());
+        System.out.println("i:" + this.i + " object:" + this.object); //
+    }
 
     public Prototype clone() {
         Prototype protoType = null;
         try {
             protoType = (Prototype) super.clone();
-            protoType.i = 50;
+            //protoType.i = 50;
             System.out.println("clone class Prototype");
         } catch (CloneNotSupportedException e) {
 

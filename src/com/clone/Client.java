@@ -10,8 +10,27 @@ public class Client {
         ConcretePrototype cpClone = (ConcretePrototype) concretePrototype.clone();
         cpClone.show();
 
-//        Prototype prototype = new Prototype();
-//        Prototype prototypeClone = prototype.clone();
+        System.out.println("----------------------------------");
+        Prototype prototype = new Prototype();
+        Prototype prototypeClone = prototype.clone();
+        prototype.show();;
+        prototypeClone.show();
 //        ConcretePrototype cpClone1 = (ConcretePrototype) prototypeClone;
     }
+
+    /** the reference field won't be deep clone as default
+     * output:
+     * this:com.clone.ConcretePrototype@5cad8086 super:com.clone.ConcretePrototype@5cad8086
+     * i:10 object:java.lang.Object@6e0be858
+     * clone class Prototype
+     * clone class ConcretePrototype
+     * this:com.clone.ConcretePrototype@61bbe9ba super:com.clone.ConcretePrototype@61bbe9ba
+     * i:30 object:java.lang.Object@6e0be858
+     * ----------------------------------
+     * clone class Prototype
+     * this:com.clone.Prototype@610455d6 super:com.clone.Prototype@610455d6
+     * i:10 object:java.lang.Object@511d50c0
+     * this:com.clone.Prototype@60e53b93 super:com.clone.Prototype@60e53b93
+     * i:10 object:java.lang.Object@511d50c0
+     */
 }

@@ -97,6 +97,7 @@ public class Restaurant {
 
     Meal meal;
     ExecutorService exec = Executors.newCachedThreadPool();
+    //ExecutorService exec = Executors.newFixedThreadPool(10);
     WaitPerson waitPerson = new WaitPerson(this, "0");
     Chef chef = new Chef(this);
 

@@ -4,6 +4,7 @@ public class ConcretePrototype extends Prototype {
 
   public void show() {
     System.out.println("this:" + this.toString() + " super:" + super.toString());
+    System.out.println("i:" + this.i + " object:" + this.object); //
   }
 
   public ConcretePrototype clone() {
