@@ -39,6 +39,7 @@ public class LambdaLearning {
         MyFunctionalInterface2 functionalInterface2 = (x, y)->x.compareTo(y);
 
         //an instance method in the class of first parameter with the format someMethod(secondParameter)
+        //这种就是对每个第一个参数的instance调用
         MyFunctionalInterface2 functionalInterface2_1 = Integer::compareTo;
         MyFunctionalInterface3 functionalInterface3 = LambdaLearning::compare;//return type must be same
         System.out.println("func3 "+functionalInterface3.compare(new LambdaLearning(), 3));
@@ -46,6 +47,7 @@ public class LambdaLearning {
         System.out.println("func4 "+functionalInterface4.compare(new LambdaLearning(), 4));
 
         //An instance method fully match, must use instance :: method
+        //这种就是使用一个instance的某个方法
         MyFunctionalInterface4 functionalInterface4_1 = new LambdaLearning()::compare2;
 
         //A static method fully match, can use class :: method
