@@ -20,13 +20,14 @@ interface MyFunctionalInterface2 {
 }
 @FunctionalInterface
 interface MyFunctionalInterface3 {
-    void compare(LambdaLearning a, Integer b);
+    int compare(LambdaLearning a,  Integer b);
 }
 @FunctionalInterface
 interface MyFunctionalInterface4 {
-    LambdaLearning compare(LambdaLearning a, Integer b);
+     List compare(LambdaLearning a, Integer b);
 }
 public class LambdaLearning {
+    int value;
     public static void main(String[] args) {
         MyFunctionalInterface myFunctionalInterface = () -> "Hello";
         System.out.println(myFunctionalInterface.sayHello());
@@ -34,14 +35,21 @@ public class LambdaLearning {
         MyFunctionalInterface1 mfi = (x) -> x + 5;
         System.out.println(mfi.incrementByFive(4));
 
-        //provide a method with two parameters or a method from class of first parameter like the format firstParameter.someMethod(secondParameter)
+        //a lamda method with two parameters
         MyFunctionalInterface2 functionalInterface2 = (x, y)->x.compareTo(y);
 
-        MyFunctionalInterface2 functionalInterface21 = Integer::compareTo;
-        MyFunctionalInterface3 functionalInterface3 = LambdaLearning::compare;
-        MyFunctionalInterface4 functionalInterface4 = LambdaLearning::compare1;
-        //An instance method fully match or implement functional interface
-        MyFunctionalInterface4 functionalInterface41 = new LambdaLearning()::compare2;
+        //an instance method in the class of first parameter with the format someMethod(secondParameter)
+        MyFunctionalInterface2 functionalInterface2_1 = Integer::compareTo;
+        MyFunctionalInterface3 functionalInterface3 = LambdaLearning::compare;//return type must be same
+        System.out.println("func3 "+functionalInterface3.compare(new LambdaLearning(), 3));
+        MyFunctionalInterface4 functionalInterface4 = LambdaLearning::compare1;//return type must be same
+        System.out.println("func4 "+functionalInterface4.compare(new LambdaLearning(), 4));
+
+        //An instance method fully match, must use instance :: method
+        MyFunctionalInterface4 functionalInterface4_1 = new LambdaLearning()::compare2;
+
+        //A static method fully match, can use class :: method
+        MyFunctionalInterface4 functionalInterface4_2 = LambdaLearning::compare3;
 
         List<String> list = new ArrayList<>();
         list.add("a");
@@ -58,17 +66,22 @@ public class LambdaLearning {
 
     }
 
-    public void compare(Integer val) {
-
+    public int compare(Integer val) {
+        return val;
     }
 
-    public LambdaLearning compare1(Integer val) {
+    public List compare1(Integer val) {
+        return new ArrayList();
+    }
+
+    public List compare2(LambdaLearning a, Integer val) {
         return null;
     }
 
-    public LambdaLearning compare2(LambdaLearning a, Integer val) {
+    public static List compare3(LambdaLearning a, Integer val) {
         return null;
     }
+
 
     interface MathOperation {
         int operation(int a, int b);
