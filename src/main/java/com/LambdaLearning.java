@@ -38,10 +38,11 @@ public class LambdaLearning {
         //a lamda method with two parameters
         MyFunctionalInterface2 functionalInterface2 = (x, y)->x.compareTo(y);
 
-        //an instance method in the class of first parameter with the format someMethod(secondParameter)
+        //an instance method with secondParameter in the class/type of first parameter, must use the format someMethod(secondParameter)
         //这种就是对每个第一个参数的instance调用
-        MyFunctionalInterface2 functionalInterface2_1 = Integer::compareTo;
-        MyFunctionalInterface3 functionalInterface3 = LambdaLearning::compare;//return type must be same
+        MyFunctionalInterface2 functionalInterface2_1 = Integer::compareTo;//Integer is the first parameter's type
+        System.out.println("func2 " + functionalInterface2_1.compare(1, 3));
+        MyFunctionalInterface3 functionalInterface3 = LambdaLearning::compare;//LambdaLearning is the first parameter's type, return type must be same
         System.out.println("func3 "+functionalInterface3.compare(new LambdaLearning(), 3));
         MyFunctionalInterface4 functionalInterface4 = LambdaLearning::compare1;//return type must be same
         System.out.println("func4 "+functionalInterface4.compare(new LambdaLearning(), 4));

@@ -286,6 +286,7 @@ public class Java8Tester {
         System.out.println("流合并：" + newList);
         System.out.println("limit：" + collect);
         System.out.println("skip：" + collect2);
+        System.out.println(Arrays.stream(arr1).filter(x->x.equals("x")).collect(Collectors.toList()));
     }
 
     public void print(Object value) {
